@@ -38,9 +38,28 @@ void printPreOrder(Node* root){
   printPreOrder(root->right);      // Traverse the right subtree
 }
 
+void inOrder(Node* root){
+  if(root == NULL){
+    return;
+  }
+  inOrder(root->left);       // Traverse the left subtree
+  cout << root->data << " "; // Process the current node
+  inOrder(root->right);      // Traverse the right subtree
+}
+
+void postOrder(Node* root){
+  if(root == NULL){
+    return;
+  }
+  postOrder(root->left);       // Traverse the left subtree
+  postOrder(root->right);      // Traverse the right subtree
+  cout << root->data << " "; // Process the current node
+}
+
 //O(n) time complexity, where n is the number of nodes in the binary tree
 int main(){
   vector<int> preOrder = {1, 2, -1, -1, 3, 4, -1, -1, 5, -1, -1};
   Node* root = buildTree(preOrder);
+  inOrder(root);
   return 0;
 }
